@@ -40,7 +40,7 @@ env:
 jobs:
   # Create the Github Release™️ so the packages have something to be uploaded to
   create-release:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     outputs:
       tag: ${{ steps.create-gh-release.outputs.computed-prefix }}${{ steps.create-gh-release.outputs.version }}
     steps:
@@ -98,7 +98,7 @@ jobs:
   # Compute and upload the manifest for everything
   upload-manifest:
     needs: create-release
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -125,7 +125,7 @@ jobs:
   # Mark the Github Release™️ as a non-draft now that everything has succeeded!
   publish-release:
     needs: [create-release, upload-artifacts, upload-manifest]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
