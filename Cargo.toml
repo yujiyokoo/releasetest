@@ -1,6 +1,6 @@
 [package]
 name = "hello-world"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Test package to try cargo dist"
 license-file = "LICENCE"
